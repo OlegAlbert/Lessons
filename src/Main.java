@@ -119,7 +119,7 @@ public class Main {
         //12
         int[] thirdArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         for (int i = 0; i < thirdArray.length; i++) {
-            thirdArray[i] = (thirdArray[i] < 6) ? thirdArray[i] * 6 : thirdArray[i];
+            thirdArray[i] = (thirdArray[i] < 6) ? thirdArray[i] * 2 : thirdArray[i];
             //System.out.print(thirdArray[i] + " ");
         }
 
