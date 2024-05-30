@@ -13,7 +13,7 @@ public class Main {
     static void checkSumSign() {
         int a = 3;
         int b = 2;
-        System.out.println((a + b > 0) ? "Сумма положительная" : "Сумма отрицательная");
+        System.out.println((a + b >= 0) ? "Сумма положительная" : "Сумма отрицательная");
     }
 
     //3
@@ -125,7 +125,7 @@ public class Main {
 
         //13
         int[][] fourthArray = new int[9][9];
-        for (int i = 0; i < fourthArray.length; i++) {
+        /*for (int i = 0; i < fourthArray.length; i++) {
             for (int j = 0; j < fourthArray[0].length; j++) {
                 if ((i == j) || (i + j == fourthArray.length - 1)) {
                     fourthArray[i][j] = 1;
@@ -133,12 +133,22 @@ public class Main {
                 else {
                     fourthArray[i][j] = 0;
                 }
-               /* System.out.print(fourthArray[i][j]);
+            }
+        }*/
+
+        for (int i = 0; i <fourthArray.length; i++) {
+            fourthArray[i][i] = 1;
+            fourthArray[i][fourthArray.length - 1 - i] = 1;
+        }
+
+        /*for (int i = 0; i < fourthArray.length; i++) {
+            for (int j = 0; j < fourthArray[0].length; j++) {
+                System.out.print(fourthArray[i][j]);
                 if (j == fourthArray.length - 1) {
                     System.out.println();
-                }*/
+                }
             }
-        }
+        }*/
 
         //14
         int len = 5;
