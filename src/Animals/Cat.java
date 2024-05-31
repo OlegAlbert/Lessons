@@ -25,13 +25,17 @@ public class Cat extends Animal {
     }
 
     public void eatFromBowl (Bowl bowl, int amount) {
-        if (bowl.getFood() >= amount) {
+        if (bowl.getFood() >= amount && !this.isSatiety()) {
             bowl.setFood(bowl.getFood() - amount);
             this.satiety = true;
             System.out.println(this.name + " съел " + amount + " еды  и теперь сыт.");
             System.out.println("В миске осталось " + bowl.getFood() + " еды.");
         } else {
-            System.out.println(this.name + " не может съесть " + amount + " еды , т.к. ее в миске недостаточно.");
+            if (this.isSatiety()) {
+                System.out.println(this.name + " уже сыт.");
+            } else {
+                System.out.println(this.name + " не может съесть " + amount + " еды , т.к. ее в миске недостаточно.");
+            }
         }
     }
 

@@ -31,6 +31,7 @@ public class Main {
 
         Cat[] cats = new Cat[5];
         cats[0] = new Cat("Cat1");
+        cats[0].eatFromBowl(bowl, 20);
         cats[1] = new Cat("Cat2");
         cats[2] = new Cat("Cat3");
         cats[3] = new Cat("Cat4");
