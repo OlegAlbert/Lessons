@@ -1,10 +1,8 @@
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
+
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,12 +10,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MtsTests {
     private WebDriver driver;
 
     @BeforeEach
+    @Step("Setting up the browser and navigating to the website")
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -31,6 +31,7 @@ public class MtsTests {
     }
 
     @AfterEach
+    @Step("Closing the browser")
     public void tearDown() {
         if (driver != null) {
             driver.quit();
@@ -39,6 +40,8 @@ public class MtsTests {
 
     //Проверка заполненности полей при выборе "Услуги связи"
     @Test
+    @Description("Verify placeholders for fields under 'Connection Services'")
+    @DisplayName("Test Connection Services Placeholders")
     public void testEmptyFieldsPlaceholderForConnection() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
@@ -53,11 +56,9 @@ public class MtsTests {
                 "//p[contains(@class, 'select__option') and text() = 'Услуги связи']")))
                 .click();
 
-        // Пример: Проверка плейсхолдера поля ввода номера телефона
         WebElement phoneInput = driver.findElement(By.id("connection-phone"));
         assertEquals("Номер телефона", phoneInput.getAttribute("placeholder"));
 
-        // Добавьте проверки для других полей и вариантов оплаты услуг
         WebElement sumInput = driver.findElement(By.id("connection-sum"));
         assertEquals("Сумма", sumInput.getAttribute("placeholder"));
 
@@ -67,6 +68,8 @@ public class MtsTests {
 
     //Проверка заполненности полей при выборе "Домашний интернет"
     @Test
+    @Description("Verify placeholders for fields under 'Home Internet'")
+    @DisplayName("Test Home Internet Placeholders")
     public void testEmptyFieldsPlaceholderForInternet() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
@@ -93,6 +96,8 @@ public class MtsTests {
 
     //Проверка заполненности полей при выборе "Рассрочка"
     @Test
+    @Description("Verify placeholders for fields under 'Instalment'")
+    @DisplayName("Test Instalment Placeholders")
     public void testEmptyFieldsPlaceholderForInstalment() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
@@ -118,6 +123,8 @@ public class MtsTests {
 
     //Проверка заполненности полей при выборе "Задолженность"
     @Test
+    @DisplayName("Verify placeholder text for Arrears services")
+    @Description("Test to verify placeholder text for 'Arrears services'")
     public void testEmptyFieldsPlaceholderForArrears() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
@@ -145,6 +152,8 @@ public class MtsTests {
 
     //Проверка заполненности полей в окне подтверждения оплаты
     @Test
+    @DisplayName("Verify payment confirmation details")
+    @Description("Test to fill form and verify payment confirmation details")
     public void testFillFormAndVerifyDetails() {
         String sum = "50.00";
         String phoneNumber = "297777777";
